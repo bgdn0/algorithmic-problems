@@ -40,5 +40,22 @@ func twoSum2(_ nums: [Int], _ target: Int) -> [Int] {
     return []
 }
 
+func twoSum3(_ nums: [Int], _ target: Int) -> [Int] {
+    var additions = [Int: Int]()
+    for i in 0..<nums.count {
+        let num = nums[i]
+        if additions.keys.contains(num) {
+            if additions[num] == i {
+                continue
+            } else if let addition = additions[num] {
+                return [i, addition]
+            }
+        }
+        additions[target - num] = i
+    }
+
+    return []
+}
+
 print(twoSum2([2, 7, 11, 15], 9))
 print(twoSum2([3, 3], 6))
